@@ -6,9 +6,11 @@ import { useContext } from "react";
 import { motion } from "framer-motion";
 import CloseIcon from "@/icons/close";
 import { HEADER_NAV } from "@/constants/nav";
+import { ThemeContext } from "@/context/theme";
 
 export default function Nav() {
   const { state, dispatch } = useContext(MenuContext);
+  const { state: theme } = useContext(ThemeContext);
   // setup motion for animation, when menu open, it will slide in from right
   const variants = {
     open: { opacity: 1, x: 0 },
@@ -21,7 +23,7 @@ export default function Nav() {
       animate={state.open ? "open" : "closed"}
       variants={variants}
       transition={{ duration: 1, ease: [0.87, 0, 0.13, 1] }}
-      className="fixed inset-y-0 right-0 flex flex-col items-center justify-center w-full px-4 py-6 bg-white shadow-md sm:hidden"
+      className="fixed inset-y-0 right-0 flex flex-col items-center justify-center w-full px-4 py-6 bg-white shadow-md sm:hidden dark:bg-black"
     >
       <div className="flex items-center justify-between w-full">
         <Link href="/">
@@ -29,11 +31,11 @@ export default function Nav() {
         </Link>
         <button
           type="button"
-          className="p-2 text-gray-500 bg-white"
+          className="p-2 text-gray-500 bg-white dark:bg-black dark:text-white"
           onClick={() => dispatch({ type: "CLOSE_MENU" })}
         >
           <span className="sr-only">Close main menu</span>
-          <CloseIcon />
+          <CloseIcon style={{ stroke: theme === "dark" ? "#fff" : "#000", width:24, height:24 }} />
         </button>
       </div>
       <div className="flex flex-col items-center justify-center flex-1 px-4 mt-6">

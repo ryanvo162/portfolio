@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     // footer have contact info(email, github, linkedin, facebook, phone number). They are all links and have icons, all in center and 80% width
@@ -6,10 +8,31 @@ export default function Footer() {
 
       <ul className="flex space-x-4">
         <li>
-          <a href="mailto:ryanvo.0162@gmail.com">Email</a>
+          {/* mail in .env */}
+          <Link href={`mailto:${process.env.NEXT_PUBLIC_MY_EMAIL || "/"}`}>
+            Email
+          </Link>
         </li>
         <li>
-          <a href="https://github.com/ryanvo162">Github</a>
+          <Link href={process.env.NEXT_PUBLIC_MY_GITHUB || "/"} target="blank">
+            Github
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={process.env.NEXT_PUBLIC_MY_LINKEDIN || "/"}
+            target="blank"
+          >
+            LinkedIn
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={process.env.NEXT_PUBLIC_MY_FACEBOOK || "/"}
+            target="blank"
+          >
+            Facebook
+          </Link>
         </li>
       </ul>
     </footer>

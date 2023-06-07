@@ -39,7 +39,11 @@ export const MenuContext = createContext<{
   dispatch: Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 
-export const MenuContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const MenuContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

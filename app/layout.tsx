@@ -1,6 +1,7 @@
 import { MenuContextProvider } from "@/context/menu";
 import "./globals.css";
 import { Raleway } from "next/font/google";
+import { ThemeContext, ThemeContextProvider } from "@/context/theme";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className} suppressHydrationWarning>
-        <MenuContextProvider>{children}</MenuContextProvider>
+        <ThemeContextProvider>
+          <MenuContextProvider>{children}</MenuContextProvider>
+        </ThemeContextProvider>
       </body>
     </html>
   );
