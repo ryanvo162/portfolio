@@ -40,7 +40,6 @@ export default function Nav() {
       </div>
       <div className="flex flex-col items-center justify-center flex-1 px-4 mt-6">
         {HEADER_NAV.map((nav) => (
-          //  if first p not have margin top, the rest have margin top
           <Link
             href={nav.path}
             key={nav.path}
