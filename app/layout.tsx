@@ -1,8 +1,8 @@
 import { MenuContextProvider } from "@/context/menu";
-import "./globals.css";
+import { ThemeContextProvider } from "@/context/theme";
 import { Raleway } from "next/font/google";
-import { ThemeContext, ThemeContextProvider } from "@/context/theme";
 import Image from "next/image";
+import "./globals.css";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className} suppressHydrationWarning>
-        <div className="min-w-full min-h-full fixed z-[-1] opacity-10 object-cover">
+        <div className="min-w-full min-h-full fixed z-[-1] opacity-5 object-cover">
           <Image src="/bg.gif" alt="bg" fill />
         </div>
         <ThemeContextProvider>
