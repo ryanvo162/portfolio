@@ -1,7 +1,31 @@
+// "use client";
+
 import Image from "next/image";
 import Link from "next/link";
+// import { useCallback, useEffect, useRef } from "react";
 
 export default function Intro() {
+  // const ref = useRef<HTMLDivElement | null>(null);
+
+  // const handleLoad = useCallback(() => {
+  //   console.log(ref.current);
+  //     ref.current?.classList.add("loaded");
+  //   //   remove background image of the div
+  //       ref.current?.style.removeProperty("background-image");
+  // }, []);
+
+  // useEffect(() => {
+  //   if (ref && ref.current) {
+  //     const img = ref.current.querySelector("img");
+  //     if (!img) return;
+  //     if (img.complete) {
+  //       handleLoad();
+  //     } else {
+  //       img.addEventListener("load", handleLoad);
+  //     }
+  //   }
+  // }, [handleLoad]);
+
   return (
     // Intro is the first section of the page. Right side is the image, left side is the intro text.
     <section
@@ -13,9 +37,7 @@ export default function Intro() {
         lg:items-start lg:w-1/3 lg:justify-end lg:pb-60
         2xl:pb-80 2xl:w-2/6"
       >
-        <h1
-          className="text-4xl font-bold text-center lg:text-left 2xl:text-6xl"
-        >
+        <h1 className="text-4xl font-bold text-center lg:text-left 2xl:text-6xl">
           Hi, I&apos;m <span className="text-primary-500">Ryan</span>
         </h1>
         <p
@@ -38,15 +60,23 @@ export default function Intro() {
           </button>
         </Link>
       </div>
-      <Image
-        src="/intro.png"
-        alt="bg"
-        width={1000}
-        height={1000}
-        className="flex-1 object-cover w-full
-        lg:w-2/3 lg:self-end md:w-3/5 dark:filter dark:grayscale
-        2xl:w-4/6"
-      />
+      <div
+        className="flex-1 w-full
+        lg:w-2/3 lg:self-end md:w-3/5 2xl:w-4/6 blur-load"
+        // style={{
+        //   backgroundImage: "url('/intro-small.png')",
+        // }}
+        // ref={ref}
+      >
+        <Image
+          src="/intro.png"
+          alt="bg"
+          width={1000}
+          height={1000}
+          // priority
+          className="object-cover dark:filter dark:grayscale"
+        />
+      </div>
     </section>
   );
 }
