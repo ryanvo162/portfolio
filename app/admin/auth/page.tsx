@@ -10,7 +10,6 @@ const config = {
 };
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-console.log(apiUrl);
 
 export default function Auth() {
   const [username, setUsername] = useState("");
